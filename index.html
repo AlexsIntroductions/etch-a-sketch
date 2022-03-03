@@ -9,11 +9,19 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <main>
-        <div class="container"></div>
-        <div class="resetButton" onclick="Reset()">CLICK ME</div>
-        <div class="resizeButton" onclick="Resize(16)">16</div>
-        <div class="resizeButton" onclick="Resize(64)">64</div>
+    <main style="display: flex;flex-direction: row;">
+        <div class="colorUI">
+            <div class="colorPrint">
+                
+            </div>
+        </div>
+        <div>
+            <div class="container"></div>
+            <div class="buttonUI">
+                <div class="button" onclick="Reset()">CLICK ME</div>
+                <div class="button" onclick="Resize()">Resize the Grid</div>
+            </div>
+        </div>
     </main>
 </body>
 </html>

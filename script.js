@@ -1,5 +1,6 @@
-const currColor = 'black';
+var currColor = 'black';
 const size = 16;
+const allColors = new Array("white", "black", "green", "red", "blue", "yellow", "lime", "purple", "pink", "gray");
 
 function Initialize(size){
     const container = document.querySelector('.container');
@@ -12,6 +13,15 @@ function Initialize(size){
         block.addEventListener('mouseover', () => block.style.backgroundColor = currColor)
         container.appendChild(block);
     }
+}
+
+function ColorInit(value, index, array){
+    const colorUI = document.querySelector('.colorUI');
+    const colorButton = document.createElement('div');
+    colorButton.classList.add('colorButton');
+    colorButton.style.backgroundColor = value;
+    colorButton.addEventListener('click', () => ColorChange(value));
+    colorUI.appendChild(colorButton);
 }
 
 function Reset(){
@@ -27,10 +37,18 @@ function Delete(parent){
     }
 }
 
-function Resize(size){
+function Resize(){
     const container = document.querySelector('.container');
     Delete(container);
-    Initialize(size);
+    Initialize(window.prompt("How big would you like the grid to be?", size));
+}
+
+function ColorChange(newColor){
+    currColor = newColor;
+    document.querySelector('.colorPrint').textContent = 'Current Color: \n' + currColor;
+    console.log(currColor);
 }
 
 Initialize(size);
+allColors.forEach(ColorInit);
+document.querySelector('.colorPrint').textContent = 'Current Color: ' + currColor;
